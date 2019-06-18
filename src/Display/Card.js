@@ -10,7 +10,7 @@ const Card = ({day}) => {
                 <button className='ellipses'></button>
             </div>
             <Activities />
-            <CardFooter />
+            <CardFooter day={day}/>
         </div>
     )
 }

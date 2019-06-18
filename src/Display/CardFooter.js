@@ -1,10 +1,19 @@
 import React from 'react'
 
-const CardFooter = props => {
+const CardFooter = ({day}) => {
+    const handleReject = () => {
+        const currentDay = document.getElementById(day)
+        currentDay.classList.add('rejected')
+    }
+    
+    const handleAccept = () => {
+        const currentDay = document.getElementById(day)
+        currentDay.classList.add('accepted')
+    }
     return (
         <div className='cardFooter'>
-            <p>X</p>
-            <p>&#x2714;</p>
+            <button className='reject' onClick={handleReject}>X</button>
+            <button className='accept' onClick={handleAccept}>&#x2714;</button>
         </div>
     )
 }

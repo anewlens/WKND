@@ -91,9 +91,27 @@ header {
   max-height: 20%;
   margin: 0 1rem 1rem 1rem;
 
-  border-radius: 5px;
+  border-radius: 10px;
   background: rgb(12, 22, 38);
   animation: cardShuffleIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  transition: all .5s ease-out;
+}
+
+.rejected {
+  filter: opacity(.25);
+  border: 1px solid red;
+}
+
+.rejected .reject {
+  opacity: 0;
+}
+
+.accepted {
+  border: 1px solid rgb(0, 255, 0);
+}
+
+.accepted .accept {
+  opacity: 0;
 }
 
 #SAT {
@@ -150,7 +168,7 @@ header {
 
 .activities {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 1rem 2rem;
 }
 
@@ -177,16 +195,23 @@ header {
   justify-content: space-between;
   margin: 1rem 2rem;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2rem;
 }
 
-.cardFooter p:first-child {
+.cardFooter button:first-child {
   color: red;
 }
 
-.cardFooter p:last-child {
+.cardFooter button:last-child {
   color: rgb(0, 255, 0);
 }
+
+button {
+  border: none;
+  background-color: inherit;
+  font-size: 2rem;
+}
+
+
 
 .spacing {
   width: 100%;
