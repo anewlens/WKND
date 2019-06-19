@@ -28,7 +28,12 @@
   padding: 0;
   color: #00eeff;
 
-  --cyan: #00eeff
+  --cyan: #00eeff;
+  --blue: #005BF7;
+  --green: rgb(0, 255, 0);
+  --orange: rgb(249, 107, 25);
+  --yellow: #F7A800;
+  --magenta: #b700ff;
 }
 
 html {
@@ -36,7 +41,7 @@ html {
 }
 
 body {
-  background: hsl(218, 100%, 5%);
+  background: #000919;
 }
 
 .App {
@@ -168,37 +173,55 @@ header {
 
 .activities {
   display: flex;
-  justify-content: space-around;
-  margin: 1rem 2rem;
+  justify-content: space-between;
+  margin: .5rem 2rem;
 }
 
 .icon {
-  width: 15vw;
-  height: 15vw;
+  width: 20vw;
+  height: 20vw;
   background-color: transparent;
-  border: 3px dotted yellow;
-  box-shadow: 0px 0px 20px -10px yellow, inset 0px 0px 20px -10px yellow;
+  transition: all .2s ease-out;
 }
 
-.movie {
-  border-color: rgb(82, 255, 2);
-  box-shadow: 0px 0px 20px -10px rgb(82, 255, 2), inset 0px 0px 20px -10px rgb(82, 255, 2);
+#food path{
+  fill: var(--yellow);
 }
 
-.dnd {
-  border-color: rgb(255, 0, 43);
-  box-shadow: 0px 0px 20px -10px rgb(255, 0, 43), inset 0px 0px 20px -10px rgb(255, 0, 43);
+#food.selected {
+  -webkit-filter: drop-shadow(0px 0px 20px var(--yellow));
+  filter: drop-shadow(0px 0px 20px var(--yellow));
+  transform: scale(1.05);
+}
+
+#dnd path{
+  fill: var(--blue);
+}
+
+#dnd.selected {
+  -webkit-filter: drop-shadow(0px 0px 20px var(--blue));
+  filter: drop-shadow(0px 0px 20px var(--blue));
+  transform: scale(1.05);
+}
+
+#movie path {
+  fill: var(--orange);
+}
+
+#movie.selected {
+  -webkit-filter: drop-shadow(0px 0px 20px var(--orange));
+  filter: drop-shadow(0px 0px 20px var(--orange));
 }
 
 .cardFooter {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2rem;
+  margin: .5rem 2rem;
   font-family: 'Bebas Neue', sans-serif;
 }
 
 .cardFooter button:first-child {
-  color: red;
+  color: hsl(0, 100%, 50%);
 }
 
 .cardFooter button:last-child {
