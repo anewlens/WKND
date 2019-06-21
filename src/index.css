@@ -211,6 +211,7 @@ header {
 #movie.selected {
   -webkit-filter: drop-shadow(0px 0px 20px var(--orange));
   filter: drop-shadow(0px 0px 20px var(--orange));
+  transform: scale(1.05);
 }
 
 .cardFooter {
