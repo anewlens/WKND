@@ -1,0 +1,35 @@
+header {
+    width: 100%;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    margin-bottom: 1.5rem;
+  }
+  
+  .headerText {
+    margin: 1rem;
+  }
+  
+  .wkndTitle {
+    font-family: 'bebas-neue', sans-serif;
+    font-size: 4rem;
+    word-spacing: 1px;
+    color: white;
+  }
+  
+  .dates {
+    color: var(--cyan);
+    font-size: 2rem;
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  .profileImg {
+    margin: 1rem 2rem;
+    width: 6rem;
+    height: 6rem;
+    background-color: var(--cyan);
+    border-radius: 100%;
+    animation: picExpand .5s cubic-bezier(0.075, 0.82, 0.165, 1) .9s backwards;
+  }

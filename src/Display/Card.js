@@ -1,6 +1,7 @@
 import React from 'react'
 import Activities from './Activities'
 import CardFooter from './CardFooter'
+import '../CSS/card.css'
 
 const Card = ({day}) => {
     const handleMenu = e => {

@@ -28,7 +28,7 @@ const LoginForm = ({ loginHandler }) => {
                 placeholder='password'
                 value={password}
                 onChange={passwordHandler} />
-            <button className='loginButton'>Login</button>
+            <button className={`loginButton ${username && password ? 'glow' : null}`}>Login</button>
         </form>
     )
 }
