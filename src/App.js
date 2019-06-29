@@ -6,7 +6,8 @@ import Login from './Display/Login'
 function App() {
   const [ user, setUser ] = useState(0)
 
-  const loginHandler = () => {
+  const loginHandler = e => {
+    e.preventDefault()
     setUser(1)
   }
 
