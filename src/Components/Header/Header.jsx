@@ -1,5 +1,5 @@
 import React from 'react'
-import '../CSS/header.css'
+import './header.scss'
 
 const Header = props => {
     const dates = () => {

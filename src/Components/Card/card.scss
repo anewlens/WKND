@@ -1,0 +1,76 @@
+.card {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  
+    max-width: 100%;
+    margin: 0 .5rem 1rem .5rem;
+    padding: 1rem 2rem;
+  
+    border-radius: 10px;
+    background: rgb(12, 22, 38);
+    transition: all 1s ease-in;
+    animation: cardShuffleIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+
+    &.expanded {
+      height: 100%;
+      transform: scaleY(-5);
+      transition: all 1s ease-in;
+    }
+
+    &#SAT {
+      animation-delay: .2s;
+
+    }
+
+    &#SUN {
+      animation-delay: .4s;
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-content: flex-start;
+
+      &-day {
+        font-family: 'bebas-neue', sans-serif;
+        color: var(--cyan);
+        font-size: 4rem;
+        letter-spacing: 3pt;
+      }
+    }
+
+    &-post {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      padding: 1rem 1.5rem;
+      background-color: rgba(229, 229, 229, 0.1);
+      border-radius: 1rem;
+
+      &-author {
+        color: hsl(0, 0%, 90%);
+        font-size: 1.6rem;
+        letter-spacing: .1rem;
+      }
+
+      &-text {
+        margin-top: .5rem;
+        color: hsl(0, 0%, 70%);
+        font-size: 1.6rem;
+      }
+
+      &-comments {
+        align-self: flex-end;
+        color: var(--cyan);
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  button {
+    border: none;
+    background-color: inherit;
+    font-size: 2rem;
+  }

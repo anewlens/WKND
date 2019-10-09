@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import Header from './Display/Header'
-import Card from './Display/Card'
-import Login from './Display/Login'
+import Header from './Components/Header/Header'
+import Card from './Components/Card/Card'
+import Login from './Components/Login'
+import CardPost from './Components/Card/CardPost'
+import posts from './data/posts'
 
 function App() {
   const [ user, setUser ] = useState(0)
@@ -12,16 +14,23 @@ function App() {
   }
 
   if (!user) {
-    return (
-        <Login
-        loginHandler={loginHandler} />
-    )
+    return <Login loginHandler={loginHandler} />
   } else if (user) {
       return (
         <div className="App">
           <Header />
-          <Card day='FRI' />
-          <Card day='SAT' />
+          <Card day='FRI'>
+            {
+              posts.filter(x => x.day === 'FRI')
+                .map(post => <CardPost post={post} />)
+            }
+          </Card>
+          <Card day='SAT'>
+          {
+              posts.filter(x => x.day === 'SAT')
+                .map(post => <CardPost post={post} />)
+            }
+          </Card>
           <Card day='SUN' />
         </div>
       )
