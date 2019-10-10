@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect, useSelector } from 'react-redux'
+import { setPosts } from './redux/posts/posts.actions'
 import Header from './Components/Header/Header'
-import Card from './Components/Card/Card'
 import Login from './Components/Login'
-import CardPost from './Components/Card/CardPost'
 import posts from './data/posts'
+import CardList from './Components/CardList/CardList';
 
-function App() {
+function App({setCurrentPosts}) {
   const [ user, setUser ] = useState(0)
+
+  useEffect(() => {
+    setCurrentPosts(posts)
+  })
 
   const loginHandler = e => {
     e.preventDefault()
@@ -16,26 +21,17 @@ function App() {
   if (!user) {
     return <Login loginHandler={loginHandler} />
   } else if (user) {
-      return (
-        <div className="App">
-          <Header />
-          <Card day='FRI'>
-            {
-              posts.filter(x => x.day === 'FRI')
-                .map(post => <CardPost post={post} />)
-            }
-          </Card>
-          <Card day='SAT'>
-          {
-              posts.filter(x => x.day === 'SAT')
-                .map(post => <CardPost post={post} />)
-            }
-          </Card>
-          <Card day='SUN' />
-        </div>
-      )
-
+    return (
+      <div className="App">
+        <Header />
+        <CardList />
+      </div>
+    )
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentPosts: posts => dispatch(setPosts(posts))
+})
+
+export default connect(null, mapDispatchToProps)(App)

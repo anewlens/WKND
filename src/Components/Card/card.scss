@@ -63,14 +63,41 @@
 
       &-comments {
         align-self: flex-end;
-        color: var(--cyan);
-        font-size: 1.2rem;
+        margin-top: .5rem;
+
+        &-num {
+          color: var(--cyan);
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &-newPost {
+      display: flex;
+      align-items: baseline;
+
+      &-input {
+        width: 100%;
+        border: none;
+        border-radius: .8rem;
+        background-color: rgba(229, 229, 229, 0.05);
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+        font-size: 1.6rem;
+        color: hsla(0, 0%, 100%, 0.5);
+      }
+
+      &-button {
+        border: none;
+        background-color: inherit;
+        font-size: 1.6rem;
+        color: var(--cyan);      
+      }
+      
+      &:focus {
+        color: hsla(0, 0%, 100%, 0.8);
+        background-color: rgba(229, 229, 229, 0.1);
       }
     }
   }
   
-  button {
-    border: none;
-    background-color: inherit;
-    font-size: 2rem;
-  }
