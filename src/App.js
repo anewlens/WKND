@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { connect, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import { setPosts } from './redux/posts/posts.actions'
 import Header from './Components/Header/Header'
 import Login from './Components/Login'
 import posts from './data/posts'
 import CardList from './Components/CardList/CardList';
+import './styles/keyframes.scss'
 
 function App({setCurrentPosts}) {
   const [ user, setUser ] = useState(0)

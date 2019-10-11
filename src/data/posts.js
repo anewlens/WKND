@@ -46,7 +46,8 @@ const posts = [
         day: 'SAT',
         author: 'Sherwyn',
         text: 'Not gonna be free today, sorry guys.',
-        commentsNum: 0
+        commentsNum: 0,
+        comments: []
     }
 ]
 

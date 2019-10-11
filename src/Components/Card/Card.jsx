@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addPost } from '../../redux/posts/posts.actions'
-import Textarea from 'react-textarea-autosize';
 import CardHeader from './CardHeader'
-import TextInput from '../Inputs/TextInput'
-import CustomButton from '../Buttons/CustomButton'
+import CardForm from './CardForm';
 import './card.scss'
 
 const Card = ({day, children, addNewPost}) => {
-    const [expanded, expandCard] = useState(false)
     const [newPost, setNewPost] = useState('')
 
     const handleSubmit = e => {
@@ -29,22 +26,21 @@ const Card = ({day, children, addNewPost}) => {
     }
     
     return (
-        <div className={`card ${expanded ? 'expanded' : null}`} id={day}>
+        <div className='card' id={day}>
             <CardHeader day={day} />
             {children}
-            <form className="card-newPost" onSubmit={handleSubmit}>
-
-                <Textarea placeholder='Add new post' value={newPost} onChange={e => setNewPost(e.target.value)} className="card-newPost-input"/>
-                <CustomButton type='submit' className='card-newPost-button'>
-                    Post
-                </CustomButton>
-            </form>
+            <CardForm 
+                onSubmit={handleSubmit} 
+                className='card-form-post' 
+                value={newPost} 
+                onChange={setNewPost} 
+                label='post' />
         </div>
     )
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNewPost: post => dispatch(addPost(post))
+    addNewPost: post => dispatch(addPost(post)),
 })
 
 export default connect(null, mapDispatchToProps)(Card)

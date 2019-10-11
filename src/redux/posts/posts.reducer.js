@@ -15,7 +15,18 @@ const postsReducer = (state=initial_state, action) => {
                     ...action.payload
                 }
             ]
-            
+
+        case PostsActionTypes.ADD_COMMENT: 
+            return state.map(post => {
+                if (post.id === action.payload.post_id) {
+                    return {
+                        ...post,
+                        comments: [...post.comments, action.payload]
+                    }
+                } else {
+                    return post
+                }
+            })
         default:
             return state
     }

@@ -11,12 +11,13 @@
   font-family: sans-serif;
   color: white;
 
+  --background: #000919;
   --cyan: hsl(184, 40%, 50%);
   --blue: #005BF7;
   --green: rgb(0, 255, 0);
+  --magenta: #b700ff;
   --orange: rgb(249, 107, 25);
   --yellow: #F7A800;
-  --magenta: #b700ff;
 }
 
 html {
@@ -24,12 +25,12 @@ html {
 }
 
 body {
-  background: #000919;
+  background: var(--background);
 }
 
 .App {
-  max-width: 100%;
-  min-height: 100vh;
+  max-width: 100vw;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

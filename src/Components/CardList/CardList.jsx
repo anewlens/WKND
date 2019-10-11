@@ -13,14 +13,14 @@ const CardList = () => {
             {
                 currentPosts
                 .filter(post => post.day === 'FRI')
-                .map(post => <CardPost post={post} />)
+                .map(post => <CardPost key={post.id} post={post} />)
             }
             </Card>
             <Card day='SAT'>
             {
                 currentPosts
                 .filter(post => post.day === 'SAT')
-                .map(post => <CardPost post={post} />)
+                .map(post => <CardPost key={post.id} post={post} />)
             }
             </Card>
             <Card day='SUN' />

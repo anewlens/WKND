@@ -1,13 +1,66 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { connect } from 'react-redux'
+import CardComment from './CardComment'
+import { addComment } from '../../redux/posts/posts.actions'
+import CardForm from './CardForm'
 
-const CardPost = ({post: {author, text, commentsNum}}) => (
-    <div className="card-post">
-        <h3 className="card-post-author">{author}</h3>
-        <p className="card-post-text">{text}</p>
-        <div className="card-post-comments">
-            <p className="card-post-comments-num">{commentsNum} comments</p>
+const CardPost = ({post: {id, author, text, comments}, addComment}) => {
+
+    const [expanded, setExpanded] = useState(false)
+    const [newComment, setNewComment] = useState('')
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        if (newComment) {
+            const comment = {
+                id: 8,
+                post_id: id,
+                text: newComment,
+                author: 'Robbie'
+            }
+            
+            addComment(comment)
+            setNewComment('')
+        }
+    }
+
+    return (
+        <div className="card-post">
+            <h3 className="card-post-author">{author}</h3>
+            <p className="card-post-text">{text}</p>
+                <button onClick={() => setExpanded(prev => !prev)} className="card-post-comments-num">
+                    {comments.length} comments
+                </button>
+            <div className='card-post-comments'>
+                <div className="card-post-comments_list">
+                    {
+                        expanded && comments.map(comment => <CardComment key={comment.id} comment={comment} />)
+                    }
+                </div>
+                <CardForm
+                    onSubmit={handleSubmit} 
+                    className='card-form-comment' 
+                    value={newComment} 
+                    onChange={setNewComment} 
+                    label='comment' />
+                {/* <form className="card-newPost" onSubmit={handleSubmit}>
+                    <Textarea 
+                        placeholder='Add new comment' 
+                        value={newComment} 
+                        onChange={setNewComment} 
+                        className="card-newPost-input"/>
+                    <CustomButton type='submit' className='card-newPost-button'>
+                        Post
+                    </CustomButton>
+                </form> */}
+            </div>
         </div>
-    </div>
-)
+    )
+}
 
-export default CardPost
+const mapDispatchToProps = dispatch => ({
+    addComment: comment => dispatch(addComment(comment))
+})
+
+export default connect(null, mapDispatchToProps)(CardPost)
