@@ -44,16 +44,6 @@ const CardPost = ({post: {id, author, text, comments}, addComment}) => {
                     value={newComment} 
                     onChange={setNewComment} 
                     label='comment' />
-                {/* <form className="card-newPost" onSubmit={handleSubmit}>
-                    <Textarea 
-                        placeholder='Add new comment' 
-                        value={newComment} 
-                        onChange={setNewComment} 
-                        className="card-newPost-input"/>
-                    <CustomButton type='submit' className='card-newPost-button'>
-                        Post
-                    </CustomButton>
-                </form> */}
             </div>
         </div>
     )
