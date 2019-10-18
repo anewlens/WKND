@@ -1,0 +1,11 @@
+.loading {
+    transition: all .2s ease-out;
+    animation: pulse 2s ease-out infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Raleway';
+    font-size: 4rem;
+    color: var(--cyan);
+}

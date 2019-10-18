@@ -1,33 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { setPosts } from './redux/posts/posts.actions'
 import Header from './Components/Header/Header'
 import Login from './Components/Login'
-import posts from './data/posts'
 import CardList from './Components/CardList/CardList';
-import './styles/keyframes.scss'
+import Loading from './Components/Loading/Loading';
 
 function App({setCurrentPosts}) {
   const [ user, setUser ] = useState(0)
-
-  useEffect(() => {
-    setCurrentPosts(posts)
-  })
+  const [ loading, setLoading ] = useState(true)
 
   const loginHandler = e => {
     e.preventDefault()
     setUser(1)
+    fetch('/posts')
+      .then(res => res.json())
+      .then(res => {
+        setCurrentPosts(res)
+        setLoading(false)
+      })
   }
 
   if (!user) {
     return <Login loginHandler={loginHandler} />
-  } else if (user) {
+  } else if (!loading) {
     return (
       <div className="App">
         <Header />
         <CardList />
       </div>
     )
+  } else {
+    return <Loading />
   }
 }
 
