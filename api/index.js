@@ -1,9 +1,8 @@
 const express = require('express')
-const path = require('path')
 const cors = require('cors')
+require('dotenv').config()
 
 const db = require('./config/db')
-const logger = require('./middleware/logger')
 const posts = require('./data/posts')
 const comments = require('./data/comments')
 const app = express()
@@ -16,7 +15,6 @@ db.authenticate()
 
 app.use(cors())
 app.use(express.json())
-// app.use(logger)
 
 app.use('/groups', require('./routes/groups'))
 app.use('/users', require('./routes/users'))

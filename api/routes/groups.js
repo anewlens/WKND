@@ -5,14 +5,13 @@ const Group = require('../models/Group')
 
 router.get('/', (req, res) => 
     Group.findAll()
-        .then(gigs => {
-            console.log(gigs)
-            res.sendStatus(200)
+        .then(groups => {
+            res.json(groups)
         })
         .catch(err => console.log(err))
 )
 
-router.get('/add', (req, res) => {
+router.post('/add', (req, res) => {
     const name = 'Game Night'
 
     Group.create({

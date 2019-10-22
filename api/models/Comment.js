@@ -5,12 +5,6 @@ const Comment = db.define('comment', {
     text: {
         type: Sequelize.STRING
     },
-    user_id: {
-        type: Sequelize.INTEGER
-    },
-    post_id: {
-        type: Sequelize.INTEGER
-    },
     createdAt: {
         type: Sequelize.TIME
     },

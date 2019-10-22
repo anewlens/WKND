@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../config/db')
+const Comment = require('./Comment')
 
 const Post = db.define('post', {
     text: {
@@ -8,12 +9,6 @@ const Post = db.define('post', {
     day: {
         type: Sequelize.STRING
     },
-    user_id: {
-        type: Sequelize.INTEGER
-    },
-    group_id: {
-        type: Sequelize.INTEGER
-    },
     createdAt: {
         type: Sequelize.TIME
     },
@@ -21,5 +16,8 @@ const Post = db.define('post', {
         type: Sequelize.TIME
     }
 })
+
+Post.hasMany(Comment, {foreignKey: 'post_id'})
+Comment.belongsTo(Post, {foreignKey: 'post_id'})
 
 module.exports = Post

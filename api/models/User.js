@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../config/db')
+const Post = require('../models/Post') 
+const Comment = require('../models/Comment')
 
 const User = db.define('user', {
     username: {
@@ -10,12 +12,14 @@ const User = db.define('user', {
     },
     name: {
         type: Sequelize.STRING
-    },
-    group_id: {
-        type: Sequelize.INTEGER
     }
 }, {
     timestamps: false
 })
+
+User.hasMany(Post, {foreignKey: 'user_id'})
+Post.belongsTo(User, {foreignKey: 'user_id'})
+User.hasMany(Comment, {foreignKey: 'user_id'})
+Comment.belongsTo(User, {foreignKey: 'user_id'})
 
 module.exports = User
