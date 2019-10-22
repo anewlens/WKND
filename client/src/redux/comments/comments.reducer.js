@@ -1,13 +1,13 @@
-import PostsActionTypes from './posts.types' 
+import CommentsActionTypes from './comments.types' 
 
 const initial_state = null 
 
-const postsReducer = (state=initial_state, action) => {
+const commentsReducer = (state=initial_state, action) => {
     switch (action.type) {
-        case PostsActionTypes.SET_POSTS:
+        case CommentsActionTypes.SET_COMMENTS:
             return action.payload
         
-        case PostsActionTypes.ADD_POST:
+        case CommentsActionTypes.ADD_COMMENT:
             return [
                 ...state,
                 {
@@ -21,4 +21,4 @@ const postsReducer = (state=initial_state, action) => {
     }
 }
 
-export default postsReducer
+export default commentsReducer

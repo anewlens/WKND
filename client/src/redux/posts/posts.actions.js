@@ -9,8 +9,3 @@ export const addPost = post => ({
     type: PostsActionTypes.ADD_POST,
     payload: post
 })
-
-export const addComment = comment => ({
-    type: PostsActionTypes.ADD_COMMENT,
-    payload: comment
-})

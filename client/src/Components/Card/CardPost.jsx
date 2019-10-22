@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import CardComment from './CardComment'
-import { addComment } from '../../redux/posts/posts.actions'
+import { addComment } from '../../redux/comments/comments.actions'
 import CardForm from './CardForm'
+import commentsServices from '../../services/comments.services'
 
-const CardPost = ({post: {id, author, text, comments}, addComment}) => {
+const CardPost = ({post: {id, author, text}, comments, addComment}) => {
 
     const [expanded, setExpanded] = useState(false)
     const [newComment, setNewComment] = useState('')
@@ -14,14 +15,15 @@ const CardPost = ({post: {id, author, text, comments}, addComment}) => {
 
         if (newComment) {
             const comment = {
-                id: 8,
-                post_id: id,
                 text: newComment,
-                author: 'Robbie'
+                user_id: 1,
+                post_id: id,
             }
             
-            addComment(comment)
-            setNewComment('')
+            commentsServices.addComment(comment)
+                .then(() => {
+                    setNewComment('')
+                })
         }
     }
 

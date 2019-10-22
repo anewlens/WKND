@@ -4,25 +4,30 @@ import { addPost } from '../../redux/posts/posts.actions'
 import CardHeader from './CardHeader'
 import CardForm from './CardForm';
 import './card.scss'
+import postsServices from '../../services/posts.services';
 
 const Card = ({day, children, addNewPost}) => {
     const [newPost, setNewPost] = useState('')
 
-    const handleSubmit = e => {
+    const submitPost = e => {
         e.preventDefault() 
 
         if (newPost) {
             const post = {
-                day,
-                author: 'Robbie',
                 text: newPost,
-                commentsNum: 0,
-                comments: []
+                day,
+                user_id: 1,
+                group_id: 1
             }
-    
-            addNewPost(post)
-            setNewPost('')
-        }
+
+            postsServices.addPost(post)
+                .then((res) => {
+                    console.log(res)
+                    // addNewPost(post)
+                    setNewPost('')
+                })
+              .catch(err => console.log('err', err.message))
+            }
     }
     
     return (
@@ -30,7 +35,7 @@ const Card = ({day, children, addNewPost}) => {
             <CardHeader day={day} />
             {children}
             <CardForm 
-                onSubmit={handleSubmit} 
+                onSubmit={submitPost} 
                 className='card-form-post' 
                 value={newPost} 
                 onChange={setNewPost} 
