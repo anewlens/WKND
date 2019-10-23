@@ -7,6 +7,7 @@ import Login from './Components/Login'
 import CardList from './Components/CardList/CardList';
 import Loading from './Components/Loading/Loading';
 import postsServices from './services/posts.services';
+import commentsServices from './services/comments.services';
 
 function App({ setCurrentPosts, setCurrentComments}) {
   const [ user, setUser ] = useState(0)
@@ -16,10 +17,11 @@ function App({ setCurrentPosts, setCurrentComments}) {
     e.preventDefault()
     setUser(1)
 
-    const data = await postsServices.getPosts()
+    const posts = await postsServices.getPosts()
+    const comments = await commentsServices.getComments()
 
-    setCurrentPosts(data.posts)
-    setCurrentComments(data.comments)
+    setCurrentPosts(posts)
+    setCurrentComments(comments)
     setLoading(false)
   }
 

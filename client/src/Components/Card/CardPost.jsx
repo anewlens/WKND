@@ -22,6 +22,7 @@ const CardPost = ({post: {id, author, text}, comments, addComment}) => {
             
             commentsServices.addComment(comment)
                 .then(() => {
+                    addComment({...comment, author: 'Robbie'})
                     setNewComment('')
                 })
         }

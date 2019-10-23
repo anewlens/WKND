@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../config/db')
 const Group = require('../models/Group')
 
 router.get('/', (req, res) => 

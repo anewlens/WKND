@@ -3,8 +3,6 @@ const cors = require('cors')
 require('dotenv').config()
 
 const db = require('./config/db')
-const posts = require('./data/posts')
-const comments = require('./data/comments')
 const app = express()
 const port = process.env.PORT || 4000
 
@@ -22,7 +20,5 @@ app.use('/posts', require('./routes/posts'))
 app.use('/comments', require('./routes/comments'))
 
 app.get('/', (req, res) => res.send('Hello World'))
-
-app.get('/fake', (req, res) => res.send({posts, comments}))
 
 app.listen(port, () => console.log(`WKND listening on port ${port}`))
