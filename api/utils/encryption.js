@@ -1,17 +1,12 @@
 const bcrypt = require('bcrypt')
-const crypto = require('crypto')
+const jwt = require('jsonwebtoken')
 const saltRounds = 10
 
 const hashPW = pw => bcrypt.hash(pw, saltRounds)
 
-const comparePW = pw => bcrypt.compare(pw, saltRounds)
+const comparePW = (pw, hashed_pw) => bcrypt.compare(pw, hashed_pw)
 
-const createToken = async () => {
-    const token = await crypto.randomBytes(16, (err, data) => {
-        err ? err : data.toString('base64')
-    })
+const signToken = (username, id) => 
+    jwt.sign({username, id}, process.env.TOKEN_SECRET)
 
-    return token
-}
-
-module.exports = {hashPW, comparePW, createToken}
+module.exports = {hashPW, comparePW, signToken}

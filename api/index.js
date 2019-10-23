@@ -14,6 +14,7 @@ db.authenticate()
 app.use(cors())
 app.use(express.json())
 
+app.use('/login', require('./routes/login'))
 app.use('/signup', require('./routes/signup'))
 app.use('/groups', require('./routes/groups'))
 app.use('/users', require('./routes/users'))
