@@ -11,7 +11,6 @@
   
     border-radius: 10px;
     background: rgb(12, 22, 38);
-    transition: all 1s ease-in;
     animation: cardShuffleIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
 
     & * {
@@ -25,6 +24,7 @@
 
     &#SUN {
       animation-delay: .4s;
+      margin-bottom: 3rem;
     }
 
     &-header {
@@ -62,7 +62,6 @@
       }
       
       &-comments {
-        margin-top: .5rem;
         
         &_list {
           transition: all .2s;
@@ -71,6 +70,7 @@
         
         &-num {
           align-self: flex-end;
+          margin-top: .5rem;
           color: var(--cyan);
           font-size: 1.2rem;
           background: transparent;

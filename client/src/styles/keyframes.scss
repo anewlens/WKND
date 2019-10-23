@@ -1,3 +1,17 @@
+@keyframes shake {
+  0% {
+    transfrom: translateX(-5px);
+  }
+
+  50% {
+    transfrom: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;

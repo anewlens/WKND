@@ -15,26 +15,26 @@ const CardList = () => {
     return (
         <section className="cardList">
             <Card day='FRI'>
-            {
-                currentPosts
-                .filter(post => post.day === 'FRI')
-                .map(post => 
-                    <CardPost 
-                    key={post.id} 
-                    post={post}
-                    comments={currentComments.filter(comment => comment.post_id === post.id)} />)
-            }
+                {
+                    currentPosts
+                    .filter(post => post.day === 'FRI')
+                    .map(post => 
+                        <CardPost 
+                        key={post.id} 
+                        post={post}
+                        comments={currentComments.filter(comment => comment.post_id === post.id)} />)
+                }
             </Card>
             <Card day='SAT'>
-            {
-                currentPosts
-                .filter(post => post.day === 'SAT')
-                .map(post => 
-                    <CardPost 
-                        key={post.id} 
-                        post={post} 
-                        comments={currentComments.filter(comment => comment.post_id === post.id)}/>)
-            }
+                {
+                    currentPosts
+                    .filter(post => post.day === 'SAT')
+                    .map(post => 
+                        <CardPost 
+                            key={post.id} 
+                            post={post} 
+                            comments={currentComments.filter(comment => comment.post_id === post.id)}/>)
+                }
             </Card>
             <Card day='SUN' />
         </section>

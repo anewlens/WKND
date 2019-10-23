@@ -8,7 +8,8 @@ router.post('/', async (req, res) => {
     try {
         const body = req.body 
         const user = await check.user(body.username)
-        const pwCheck = await bcrypt.compare(body.password, user.password_hash) 
+        console.log('USER', user)
+        const pwCheck = await encryption.comparePW(body.password, user.password_hash) 
     
         if (!(user && pwCheck)) {
             return res.status(401).json({

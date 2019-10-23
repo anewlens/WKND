@@ -4,7 +4,7 @@ const saltRounds = 10
 
 const hashPW = pw => bcrypt.hash(pw, saltRounds)
 
-const comparePW = (pw, hashed_pw) => bcrypt.compare(pw, hashed_pw)
+const comparePW = (pw, hashed_pw='nohash') => bcrypt.compare(pw, hashed_pw)
 
 const signToken = (username, id) => 
     jwt.sign({username, id}, process.env.TOKEN_SECRET)
