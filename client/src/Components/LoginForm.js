@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import userServices from '../services/user.services'
-import postsServices from '../services/posts.services'
-import commentsServices from '../services/comments.services'
 import { setPosts } from '../redux/posts/posts.actions'
 import { setComments } from '../redux/comments/comments.actions'
 import { setUser } from '../redux/user/user.actions'
 import { toggleLoading } from '../redux/loading/loading.actions'
+import getAll from '../services/data.services'
 
 const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}) => {
     const [ username, setUsername ] = useState('')
@@ -15,19 +14,17 @@ const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}
 
     const loginHandler = async e => {
         e.preventDefault()
-
         try {
             const user = await userServices.login(username, password)
             
             if (user) {
-                const posts = await postsServices.getPosts()
-                const comments = await commentsServices.getComments()
-                setUser(user.data)
+                const [posts, comments] = await getAll(user)
+                setUser(user)
                 setCurrentPosts(posts)
                 setCurrentComments(comments)
                 toggleLoading()
+                localStorage.setItem('localUser', JSON.stringify(user))
             }
-            
         } catch(error) {
             console.log("ERROR", error)
 
@@ -35,13 +32,11 @@ const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}
             setTimeout(() => {
                 setErrorMessage(null)
             }, 3000);
-        } 
-      }
+        }
+    }
 
       const errorStyles = errorMessage ?
-        {
-          borderColor: 'red'
-        }
+        { borderColor: 'red' }
         : null
 
     return (

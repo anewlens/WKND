@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { connect, useSelector } from 'react-redux'
+import { connect } from 'react-redux'
 import CardComment from './CardComment'
 import { addComment } from '../../redux/comments/comments.actions'
 import CardForm from './CardForm'

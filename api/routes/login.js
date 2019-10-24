@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
             })
         }
     
-        const token = encryption.signToken(user.username, user.id)
+        const token = encryption.signToken(user.username, user.id, user.group_id)
     
         return res
             .status(200)
