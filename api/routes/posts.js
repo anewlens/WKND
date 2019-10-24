@@ -47,11 +47,11 @@ router.get('/combined', (req, res) => {
             }
         ]
     })
-        .then(posts => {
-            console.log('POSTS', posts)
-            return res.json(posts)
-        })
-        .catch(err => console.log(err))
+    .then(posts => {
+        console.log("HEYHEYHEY", posts)
+        return res.json(posts)
+    })
+    .catch(err => console.log(err))
 })
 
 router.post('/add', (req, res) => {

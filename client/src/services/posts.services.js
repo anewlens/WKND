@@ -20,5 +20,13 @@ export default {
                 })
             ))
     },
-    addPost: post => axios.post('http://localhost:4000/posts/add', post)
+    addPost: (post, req) => {
+        setToken(req.token)
+
+        const config = {
+            headers: { Authorization: token }
+        }
+
+        return axios.post('http://localhost:4000/posts/add', post, config)
+    }
 }

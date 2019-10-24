@@ -21,5 +21,13 @@ export default {
             ))
             .catch(err => console.log(err))
     },
-    addComment: comment => axios.post('http://localhost:4000/comments/add', comment)
+    addComment: (comment, user) => {
+        setToken(user.token)
+
+        const config = { 
+            headers: { Authorization: token }
+        }
+
+        return axios.post('http://localhost:4000/comments/add', comment, config)
+    }
 }

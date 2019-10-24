@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import { addPost } from '../../redux/posts/posts.actions'
 import CardHeader from './CardHeader'
 import CardForm from './CardForm';
@@ -8,6 +8,7 @@ import postsServices from '../../services/posts.services';
 
 const Card = ({day, children, addNewPost}) => {
     const [newPost, setNewPost] = useState('')
+    const user = useSelector(state => state.user)
 
     const submitPost = e => {
         e.preventDefault() 
@@ -16,14 +17,14 @@ const Card = ({day, children, addNewPost}) => {
             const post = {
                 text: newPost,
                 day,
-                user_id: 1,
+                user_id: user.id,
                 group_id: 1
             }
 
-            postsServices.addPost(post)
+            postsServices.addPost(post, user)
                 .then((res) => {
-                    console.log(res)
-                    addNewPost({...post, author: 'Robbie'})
+                    console.log(user)
+                    addNewPost({...post, author: user.name})
                     setNewPost('')
                 })
               .catch(err => console.log('err', err.message))

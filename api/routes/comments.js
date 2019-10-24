@@ -45,6 +45,7 @@ router.get('/combined', (req, res) => {
 
 router.post('/add', (req, res) => {
     const comment = req.body
+    console.log('Comment', comment)
 
     Comment.create({ ...comment })
         .then((comment) => res.redirect('/comments'))

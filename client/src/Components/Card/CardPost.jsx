@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 import CardComment from './CardComment'
 import { addComment } from '../../redux/comments/comments.actions'
 import CardForm from './CardForm'
@@ -9,6 +9,7 @@ const CardPost = ({post: {id, author, text}, comments, addComment}) => {
 
     const [expanded, setExpanded] = useState(false)
     const [newComment, setNewComment] = useState('')
+    const user = useSelector(state => state.user)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -18,11 +19,14 @@ const CardPost = ({post: {id, author, text}, comments, addComment}) => {
                 text: newComment,
                 user_id: 1,
                 post_id: id,
+                group_id: user.group_id
             }
             
-            commentsServices.addComment(comment)
+            console.log("COMMENT", user)
+
+            commentsServices.addComment(comment, user)
                 .then(() => {
-                    addComment({...comment, author: 'Robbie'})
+                    addComment({...comment, author: user.name})
                     setNewComment('')
                 })
         }

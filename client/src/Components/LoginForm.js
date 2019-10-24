@@ -18,7 +18,7 @@ const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}
             const user = await userServices.login(username, password)
             
             if (user) {
-                const [posts, comments] = await getAll(user)
+                const {posts, comments} = await getAll(user)
                 setUser(user)
                 setCurrentPosts(posts)
                 setCurrentComments(comments)

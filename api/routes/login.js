@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require('bcrypt')
 const encryption = require('../utils/encryption')
 const check = require('../utils/checks')
 
@@ -21,7 +20,7 @@ router.post('/', async (req, res) => {
     
         return res
             .status(200)
-            .send({token, username: user.username, name: user.name})
+            .send({token, id: user.id, username: user.username, name: user.name, group_id: user.group_id})
     } catch(error) {
         console.log('Error:', error)
         res.status(500).send('Server Error')
