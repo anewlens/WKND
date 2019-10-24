@@ -1,0 +1,36 @@
+.signup {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-title {
+        font-family: 'bebas-neue', sans-serif;
+        font-size: 10rem;
+        word-spacing: 1px;
+        color: white;
+        animation: loginTitle 1s ease-in forwards;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: loginForm .25s ease-in 1s both;
+
+        &-group {
+            display: flex;
+            flex-direction: column;
+            margin-top: 2rem;
+        }
+
+        &-button {
+            margin: 1rem;
+            font-family: 'Raleway', sans-serif;
+            font-size: 2.5rem;
+            color: var(--yellow);
+            transition: all .25s ease-in-out;
+        }
+    }
+}

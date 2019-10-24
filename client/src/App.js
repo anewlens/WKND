@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect, useSelector } from 'react-redux'
 import Header from './Components/Header/Header'
-import Login from './Components/Login'
+import Login from './Components/Login/Login'
 import CardList from './Components/CardList/CardList';
 import Loading from './Components/Loading/Loading';
 import { setUser } from './redux/user/user.actions';
@@ -9,6 +9,7 @@ import { setPosts } from './redux/posts/posts.actions';
 import { setComments } from './redux/comments/comments.actions';
 import { toggleLoading } from './redux/loading/loading.actions';
 import getAll from './services/data.services';
+import Signup from './Components/Signup/Signup';
 
 function App({setUser, setComments, setPosts, toggleLoading}) {
   const user = useSelector(state => state.user)
@@ -30,7 +31,8 @@ function App({setUser, setComments, setPosts, toggleLoading}) {
   }, [setUser, setPosts, setComments, toggleLoading])
 
   if (!user) {
-    return <Login />
+    // return <Login />
+    return <Signup />
   } else if (!loading) {
     return (
       <div className="App">

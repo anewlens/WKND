@@ -17,7 +17,7 @@ const CardPost = ({post: {id, author, text}, comments, addComment}) => {
         if (newComment) {
             const comment = {
                 text: newComment,
-                user_id: 1,
+                user_id: user.id,
                 post_id: id,
                 group_id: user.group_id
             }

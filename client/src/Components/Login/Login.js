@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginForm from './LoginForm'
-import '../styles/login.scss';
+import '../../styles/login.scss';
 
 const Login = ({loginHandler}) => {
     return (

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import userServices from '../services/user.services'
-import { setPosts } from '../redux/posts/posts.actions'
-import { setComments } from '../redux/comments/comments.actions'
-import { setUser } from '../redux/user/user.actions'
-import { toggleLoading } from '../redux/loading/loading.actions'
-import getAll from '../services/data.services'
+import userServices from '../../services/user.services'
+import { setPosts } from '../../redux/posts/posts.actions'
+import { setComments } from '../../redux/comments/comments.actions'
+import { setUser } from '../../redux/user/user.actions'
+import { toggleLoading } from '../../redux/loading/loading.actions'
+import getAll from '../../services/data.services'
+import ErrorMessage from '../ErrorMessage/ErrorMessage'
 
 const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}) => {
     const [ username, setUsername ] = useState('')
@@ -57,7 +58,7 @@ const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}
                 style={errorStyles} />
             <button className={`loginButton ${username && password ? 'glow' : null}`}>Login</button>
 
-            <p className="loginForm-error" style={{opacity: errorMessage ? .8 : 0}}>{errorMessage}</p>
+            <ErrorMessage message={errorMessage} />
         </form>
     )
 }
