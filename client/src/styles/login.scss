@@ -1,24 +1,33 @@
 .login {
+  transition: all .3s;
     min-height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    position: absolute;
+    left: 100vw;
+
+    &.show {
+      left: 0
+    }
+
     &-title {
       font-family: 'bebas-neue', sans-serif;
       font-size: 10rem;
       word-spacing: 1px;
       color: white;
-      animation: loginTitle 1s ease-in forwards;  
+      animation: loginTitle 1s ease-in forwards; 
+      
     }
     
     &-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: loginForm .25s ease-in 1s both;
       margin-top: 2rem;
+      animation: loginForm .25s ease-in 1s both;
     }
     
     &-button {
@@ -34,26 +43,4 @@
         text-shadow: 0px 0px 10px var(--yellow);
       }
     }
-
-  }
-  
-  // .loginCard {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   justify-content: center;
-  
-  //   width: 95vw;
-  //   height: 50vh;
-  //   margin: 0 1rem 1rem 1rem;
-  
-  //   border-radius: 10px;
-  //   background: rgb(12, 22, 38);
-  //   animation: cardShuffleIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
-  // }
-
-
-  button {
-
-      font-size: 2rem;
   }

@@ -1,0 +1,13 @@
+.userWrapper {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    &-button {
+        animation: loginForm .25s ease-in 1s both;
+        border-radius: 4px;
+        padding: .8rem 1rem;
+        font-size: 1.6rem;
+        color: hsla(186, 50%, 80%, 0.8);
+    }
+}
