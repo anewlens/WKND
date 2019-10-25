@@ -1,12 +1,37 @@
 .formInput {
-    max-width: 40vw;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: none;
-    border-bottom: .5px solid var(--cyan);
-    border-radius: 0;
-    outline: none;
-    background: none;
-    text-align: center;
-    font-size: 2.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &-input {
+        max-width: 60vw;
+        margin-bottom: 3rem;
+        padding: 1rem;
+        border: none;
+        border-bottom: .5px solid var(--cyan);
+        border-radius: 0;
+        outline: none;
+        background: none;
+        text-align: left;
+        font-size: 2rem;
+        
+        &::placeholder {
+            color: hsla(0, 0%, 100%, 0.8)
+        }
+
+        &:focus {
+          color: hsla(0, 0%, 100%, 0.8);
+        }
+    }
+
+    &-label {
+        animation: labelShift .2s ease-in-out both;
+        transition: all .3s ease-out;
+        position: absolute;
+        top: -1rem;
+        left: 1rem;
+        font-size: 1.2rem;
+        opacity: .8;
+        font-weight: bold;
+    }
 }

@@ -7,6 +7,8 @@ import { setUser } from '../../redux/user/user.actions'
 import { toggleLoading } from '../../redux/loading/loading.actions'
 import getAll from '../../services/data.services'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
+import FormInput from '../Inputs/FormInput'
+import CustomButton from '../Buttons/CustomButton'
 
 const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}) => {
     const [ username, setUsername ] = useState('')
@@ -41,22 +43,22 @@ const LoginForm = ({setCurrentPosts, setCurrentComments, setUser, toggleLoading}
         : null
 
     return (
-        <form onSubmit={loginHandler} className='loginForm'>
-            <input
+        <form onSubmit={loginHandler} className='login-form'>
+            <FormInput
                 type='text'
-                className='loginInput' 
                 placeholder='username'
                 value={username}
                 onChange={e => setUsername(e.target.value)}
                 style={errorStyles} />
-            <input 
+            <FormInput 
                 type='password'
-                className='loginInput' 
                 placeholder='password'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 style={errorStyles} />
-            <button className={`loginButton ${username && password ? 'glow' : null}`}>Login</button>
+            <CustomButton className={`login-button ${username && password ? 'glow' : null}`}>
+                Login
+            </CustomButton>
 
             <ErrorMessage message={errorMessage} />
         </form>

@@ -93,7 +93,13 @@ const SignupForm = ({setUser, setPosts, setComments, toggleLoading}) => {
                     onChange={e => setGroupID(e.target.value)} />
             </div>
 
-            <CustomButton className="signup-form-button">
+            <CustomButton 
+                className={
+                    `signup-form-button ${
+                        un && pw && name && confirmPW && groupName && groupID 
+                        ? 'glow' 
+                        : null
+                    }`}>
                 Create
             </CustomButton>
 

@@ -1,14 +1,14 @@
-@keyframes shake {
+@keyframes labelShift {
   0% {
-    transfrom: translateX(-5px);
-  }
-
-  50% {
-    transfrom: translateX(5px);
+    font-size: 2rem;
+    top: 1rem;
+    color: hsla(0, 0%, 100%, 0.8);
   }
 
   100% {
-    transform: translateX(0px);
+    font-size: 1.2rem;
+    top: -1rem;
+    color: white;
   }
 }
 

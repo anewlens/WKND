@@ -4,65 +4,56 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-  
-  .loginCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
-    width: 95vw;
-    height: 50vh;
-    margin: 0 1rem 1rem 1rem;
-  
-    border-radius: 10px;
-    background: rgb(12, 22, 38);
-    animation: cardShuffleIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
-  }
-  
-  .loginTitle {
-    font-family: 'bebas-neue', sans-serif;
-    font-size: 10rem;
-    word-spacing: 1px;
-    color: white;
-    animation: loginTitle 1s ease-in forwards;
-  }
-  
-  .loginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: loginForm .25s ease-in 1s both;
-  }
-  
-  .loginInput {
-    max-width: 40vw;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: none;
-    border-bottom: .5px solid var(--cyan);
-    border-radius: 0;
-    outline: none;
-    background: none;
-    text-align: center;
-    font-size: 2.5rem;
-  }
-  
-  .loginButton {
-    margin: 1rem;
-    font-family: 'Raleway', sans-serif;
-    font-size: 2.5rem;
-    color: var(--yellow);
-    transition: all .25s ease-in-out;
-  }
-
-  .glow {
-    text-shadow: 0px 0px 10px var(--yellow);
-  }
-
-  button {
+    
+    &-title {
+      font-family: 'bebas-neue', sans-serif;
+      font-size: 10rem;
+      word-spacing: 1px;
+      color: white;
+      animation: loginTitle 1s ease-in forwards;  
+    }
+    
+    &-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: loginForm .25s ease-in 1s both;
+      margin-top: 2rem;
+    }
+    
+    &-button {
+      transition: all .25s ease-in-out;
+      margin: 1rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 2.5rem;
+      color: var(--yellow);
       border: none;
       background-color: inherit;
+
+      &.glow {
+        text-shadow: 0px 0px 10px var(--yellow);
+      }
+    }
+
+  }
+  
+  // .loginCard {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   justify-content: center;
+  
+  //   width: 95vw;
+  //   height: 50vh;
+  //   margin: 0 1rem 1rem 1rem;
+  
+  //   border-radius: 10px;
+  //   background: rgb(12, 22, 38);
+  //   animation: cardShuffleIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  // }
+
+
+  button {
+
       font-size: 2rem;
   }
