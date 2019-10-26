@@ -13,7 +13,7 @@ export default {
             headers: { Authorization: token }
         }
 
-        return axios.get('http://localhost:4000/posts/combined', config)
+        return axios.get('/posts/combined', config)
             .then(posts =>posts.data.map(
                 ({id, text, createdAt, day, user}) => ({
                     id, text, createdAt, day, author: user.name
@@ -27,6 +27,6 @@ export default {
             headers: { Authorization: token }
         }
 
-        return axios.post('http://localhost:4000/posts/add', post, config)
+        return axios.post('/posts/add', post, config)
     }
 }

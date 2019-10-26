@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     check: async (gName, gID) => {
-        const res = await axios.post('http://localhost:4000/groups', {name: gName, id: gID})
+        const res = await axios.post('/groups', {name: gName, id: gID})
 
         if (res.data === 'group found') {
             return true
@@ -11,7 +11,7 @@ export default {
         }
     },
     create: async (gName, gID) => {
-        const res = await axios.post('http://localhost:4000/groups/add', {name: gName, id: gID})
+        const res = await axios.post('/groups/add', {name: gName, id: gID})
 
         return res.data
     }

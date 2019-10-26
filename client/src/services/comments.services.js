@@ -13,7 +13,7 @@ export default {
             headers: { Authorization: token }
         }
 
-        return axios.get('http://localhost:4000/comments/combined', config)
+        return axios.get('/comments/combined', config)
             .then(comments => comments.data.map(
                 ({id, text, createdAt, post_id, user, group_id}) => ({
                     id, text, createdAt, post_id, group_id, author: user.name
@@ -28,6 +28,6 @@ export default {
             headers: { Authorization: token }
         }
 
-        return axios.post('http://localhost:4000/comments/add', comment, config)
+        return axios.post('/comments/add', comment, config)
     }
 }
