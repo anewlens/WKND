@@ -9,9 +9,9 @@ const UserWrapper = () => {
 
     function handleView() {
         console.log('click')
-        if (view == 'login') {
+        if (view === 'login') {
             setView('sign up')
-        } else if (view == 'sign up') {
+        } else if (view === 'sign up') {
             setView('login')
         }
     }

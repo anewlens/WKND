@@ -7,7 +7,6 @@ router.post('/', async (req, res) => {
     try {
         const body = req.body 
         const user = await check.user(body.username)
-        console.log('USER', user)
         const pwCheck = await encryption.comparePW(body.password, user.password_hash) 
     
         if (!(user && pwCheck)) {
@@ -17,10 +16,14 @@ router.post('/', async (req, res) => {
         }
     
         const token = encryption.signToken(user.username, user.id, user.group_id)
-    
+        
+        const { id, username, name, group_id} = user
+
         return res
             .status(200)
-            .send({token, id: user.id, username: user.username, name: user.name, group_id: user.group_id})
+            .send({
+                token, id, username, name, group_id, group_name: user.group.dataValues.name
+            })
     } catch(error) {
         console.log('Error:', error)
         res.status(500).send('Server Error')

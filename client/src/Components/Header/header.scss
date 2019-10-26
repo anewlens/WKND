@@ -1,28 +1,31 @@
-header {
+.header {
     width: 100%;
   
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
-    margin-bottom: 1.5rem;
-  }
-  
-  .headerText {
-    margin: 1rem;
-  }
-  
-  .wkndTitle {
-    font-family: 'bebas-neue', sans-serif;
-    font-size: 4rem;
-    word-spacing: 1px;
-    color: white;
-  }
-  
-  .dates {
-    color: var(--cyan);
-    font-size: 2rem;
-    font-family: 'Raleway', sans-serif;
+
+    margin: 1.5rem 0;
+
+    &-text {
+      margin: 1rem;
+    }
+
+    &-title {
+      margin-left: 5vw;
+      font-family: 'bebas-neue', sans-serif;
+      font-size: 4rem;
+      word-spacing: 1px;
+      color: white;
+    }
+
+    &-group {
+      animation: slideIn .5s cubic-bezier(0.075, 0.82, 0.165, 1) .9s backwards;
+      margin-right: 5vw;
+      color: var(--cyan);
+      font-size: 3rem;
+      font-family: 'bebas-neue', sans-serif;
+    }
   }
   
   .profileImg {
@@ -31,5 +34,4 @@ header {
     height: 4rem;
     background-color: var(--cyan);
     border-radius: 100%;
-    animation: picExpand .5s cubic-bezier(0.075, 0.82, 0.165, 1) .9s backwards;
   }

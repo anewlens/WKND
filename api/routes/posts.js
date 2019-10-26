@@ -48,7 +48,6 @@ router.get('/combined', (req, res) => {
         ]
     })
     .then(posts => {
-        console.log("HEYHEYHEY", posts)
         return res.json(posts)
     })
     .catch(err => console.log(err))
