@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const op = require('sequelize').Op
 const Comment = require('../models/Comment')
 const User = require('../models/User')
 const encryption = require('../utils/encryption')
@@ -29,8 +30,17 @@ router.get('/combined', (req, res) => {
         return res.status(401).json({error: 'Missing or incorrect token'})
     }
 
+    const toDay = new Date().getDay()
+
+    const dayRange = toDay == 0 ? 7*24*60*60*1000 : toDay*24*60*60*1000
+
     return Comment.findAll({
-        where: {group_id: decodedToken.group_id},
+        where: {
+            group_id: decodedToken.group_id,
+            createdAt: {
+                [op.gt]: new Date((new Date()).getTime() - dayRange)
+            }
+        },
         attributes: {
             exclude: ['updatedAt', 'group_id']
         },
