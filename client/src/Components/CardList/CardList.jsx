@@ -36,7 +36,17 @@ const CardList = () => {
                             comments={currentComments.filter(comment => comment.post_id === post.id)}/>)
                 }
             </Card>
-            <Card day='SUN' />
+            <Card day='SUN'>
+            {
+                    currentPosts
+                    .filter(post => post.day === 'SUN')
+                    .map(post => 
+                        <CardPost 
+                            key={post.id} 
+                            post={post} 
+                            comments={currentComments.filter(comment => comment.post_id === post.id)}/>)
+                }
+            </Card>
         </section>
     )
 }

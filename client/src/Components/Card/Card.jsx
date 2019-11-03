@@ -22,7 +22,7 @@ const Card = ({day, children, addNewPost}) => {
             }
 
             postsServices.addPost(post, user)
-                .then((res) => {
+                .then(() => {
                     console.log(user)
                     addNewPost({...post, author: user.name})
                     setNewPost('')
