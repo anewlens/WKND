@@ -66,7 +66,7 @@ router.post('/add', (req, res) => {
     const post = req.body
 
     Post.create(post)
-        .then(post => res.redirect('/posts'))
+        .then(post => res.status(201).send(post))
         .catch(err => console.log(err))
 })
 
