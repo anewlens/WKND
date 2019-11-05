@@ -1,65 +1,68 @@
-const express = require('express')
+const express = require("express")
 const router = express.Router()
-const op = require('sequelize').Op
-const Comment = require('../models/Comment')
-const User = require('../models/User')
-const encryption = require('../utils/encryption')
+const sequelize = require("sequelize")
+const op = sequelize.Op
+const Comment = require("../models/Comment")
+const User = require("../models/User")
+const encryption = require("../utils/encryption")
 
 const getTokenFrom = req => {
-    const authorization = req.get('authorization')
-    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
-        return authorization.substring(7)
-    }
-    return null
+  const authorization = req.get("authorization")
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    return authorization.substring(7)
+  }
+  return null
 }
 
-router.get('/', (req, res) => 
-    Comment.findAll()
-        .then(comments => {
-            res.json(comments)
-        })
-        .catch(err => console.log(err))
+router.get("/", (req, res) =>
+  Comment.findAll()
+    .then(comments => {
+      res.json(comments)
+    })
+    .catch(err => console.log(err))
 )
 
-router.get('/combined', (req, res) => {
-    const token = getTokenFrom(req)
+router.get("/combined", (req, res) => {
+  const token = getTokenFrom(req)
 
-    const decodedToken = encryption.verifyToken(token)
+  const decodedToken = encryption.verifyToken(token)
 
-    if (!token || !decodedToken.id) {
-        return res.status(401).json({error: 'Missing or incorrect token'})
-    }
+  if (!token || !decodedToken.id) {
+    return res.status(401).json({ error: "Missing or incorrect token" })
+  }
 
-    const toDay = new Date().getDay()
-
-    const dayRange = toDay == 0 ? 7*24*60*60*1000 : toDay*24*60*60*1000
-
-    return Comment.findAll({
-        where: {
-            group_id: decodedToken.group_id,
-            createdAt: {
-                [op.gt]: new Date((new Date()).getTime() - dayRange)
-            }
-        },
-        attributes: {
-            exclude: ['updatedAt', 'group_id']
-        },
-        include: [{
-            model: User,
-            attributes: ['name']
-        }],
-    })
-        .then(posts => res.json(posts))
-        .catch(err => console.log(err))
+  return Comment.findAll({
+    where: {
+      [op.and]: [
+        sequelize.where(
+          sequelize.fn("date_trunc", "week", sequelize.col("createdAt")),
+          "=",
+          sequelize.fn("date_trunc", "week", sequelize.fn("NOW"))
+        ),
+        { group_id: decodedToken.group_id }
+      ]
+    },
+    attributes: {
+      exclude: ["updatedAt", "group_id"]
+    },
+    include: [
+      {
+        model: User,
+        attributes: ["name"]
+      }
+    ]
+  })
+    .then(posts => res.json(posts))
+    .catch(err => console.log(err))
 })
 
-router.post('/add', (req, res) => {
-    const comment = req.body
-    console.log('Comment', comment)
+router.post("/add", (req, res) => {
+  const comment = req.body
+  console.log("Comment", comment)
 
-    Comment.create({ ...comment })
-        .then((comment) => res.redirect('/comments'))
-        .catch(err => console.log(err))
+  Comment.create({ ...comment })
+    .then(comment => res.redirect("/comments"))
+    .catch(err => console.log(err))
 })
 
 module.exports = router
